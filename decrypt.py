@@ -1,5 +1,5 @@
 # coding:utf-8
-from constantes import *
+from constants import *
 
 
 class Decryptage:
