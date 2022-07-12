@@ -1,11 +1,11 @@
 import pickle
 from crypt import Cryptage
-from decrypt import Decryptage
+from decrypt import Decrypt
 import getpass
 
 
 crypt = Cryptage()
-decrypt = Decryptage()
+decrypt = Decrypt()
 KEY = 10122004
 
 
@@ -22,7 +22,7 @@ def add_pass():
     passwords = return_passwords()
     passwords.append([ref, new_pass])
 
-    save(passwords)
+    save_passwords(passwords)
 
     print("\a>>>>>>>>>>>>>>>>>>>>>>>The password is very good added :)\n")
 
@@ -38,18 +38,18 @@ def return_passwords():
             return passwords
 
 
-def save(passwords):
+def save_passwords(passwords):
     with open('.pass', 'wb') as file:
         my_pickler = pickle.Pickler(file)
         my_pickler.dump(passwords)  # save passwords
 
 
-def save_in_file():
+def get_passwords_in_file():
     passwords = return_passwords()
     content_file = ''
 
     for password in passwords:
-        content_file += password[0] + ': ' + decrypt.unLockMess(password[1], KEY) + '\n'
+        content_file += password[0] + ': ' + decrypt.unlock_message(password[1], KEY) + '\n'
 
     with open('passwords.txt', 'w') as file:
         file.write(content_file)

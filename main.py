@@ -27,7 +27,7 @@ if __name__ == '__main__':
             display_pass()
             continue
         elif option == 4:
-            save_in_file()
+            get_passwords_in_file()
         elif option == 5:
             print("Exit")
             exit()

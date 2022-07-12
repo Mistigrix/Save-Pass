@@ -22,7 +22,7 @@ def update_pass():
 
     if confirm in affirms:
         passwords[number-1][1] = new_pass
-        save(passwords)
+        save_passwords(passwords)
     print("Le mot de passe à bien été modifier")
 
 
@@ -32,7 +32,7 @@ def display_pass():
     print("\n")
     if len(passwords) > 0:
         for mdp in passwords:
-            print(f"{i}->{mdp[0]}: {decrypt.unLockMess(mdp[1], KEY)}")
+            print(f"{i}->{mdp[0]}: {decrypt.unlock_message(mdp[1], KEY)}")
             i += 1
     else:
         print("\n\nNo password saved")

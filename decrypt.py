@@ -1,25 +1,21 @@
-# coding:utf-8
 from constants import *
 
 
-class Decryptage:
-    """Classe permettant de cryptage de fichier ou de message"""
+class Decrypt:
 
     def __init__(self):
         pass
 
-    def unLockMess(self, message, clef):
+    def unlock_message(self, message, clef):
         """Methode permettant de crypter un message et retourne le message crypter
         Paramètre: message à crypter et la clé de chiffrement"""
 
         return self.unLock(message, clef)
 
-    def unLockFile(self, path, clef):
-        """Methode permettant de crypter un fichier en retournant une liste.
-        Paramètre: Chemin menant au fichier et la clé de chiffrement"""
+    def unLockFile(self, path, key):
 
         try:
-            clef = int(clef)
+            key = int(key)
             file = open(path, 'r+')
             content = file.readlines()
             list_crypt = []
@@ -27,7 +23,7 @@ class Decryptage:
 
             # recupere chaque ligne, la crypte et l'ajoute a liste crypter
             for line in content:
-                line_crypt = self.unLock(line, clef)
+                line_crypt = self.unLock(line, key)
                 list_crypt.append(line_crypt)
 
             return list_crypt
@@ -39,12 +35,11 @@ class Decryptage:
         except:
             raise Exception
 
-    def unLock(self, message, clef):
+    def unLock(self, message, key):
 
         message_decrypter = ''
-        numero_decrypte = 0
 
-        clef = int(clef)  # conversion de la clé en entier (etait en chaine de carrctère au paravant)
+        key = int(key)  # conversion de la clé en entier (etait en chaine de carrctère au paravant)
 
         # on verifie les numeros des lettres et on les additionnent avec la clef
         for lettre in message:
@@ -53,7 +48,7 @@ class Decryptage:
                 # on verifie si on a la bonne lettre
                 if lettre == lettre_alpha:
                     # on soustrait sa clé
-                    numero_decrypte = numero_lettre - clef
+                    numero_decrypte = numero_lettre - key
                     while numero_decrypte < 0:
                         numero_decrypte = numero_decrypte + len(alphabets)
 
@@ -61,11 +56,12 @@ class Decryptage:
 
         return message_decrypter
 
+
 if __name__ == '__main__':
-    decryptage_object = Decryptage()
+    decryptage_object = Decrypt()
     message = ''
     while message != 'exit':
         message = input("Entrer le message: ")
         clef = int(input("Entrer la clé de dechiffrement: "))
-        decrypt = decryptage_object.unLockMess(message, clef)
+        decrypt = decryptage_object.unlock_message(message, clef)
         print(decrypt)

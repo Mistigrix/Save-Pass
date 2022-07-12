@@ -1,2 +1,4 @@
 .idea
 __pycache__
+.pass
+test.py
