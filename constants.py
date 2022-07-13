@@ -16,3 +16,9 @@ MENU = """
     4\tCopied all passwords to file
     5.\tExit
 """
+
+HELP = """
+    Save-Pass version 2.0.1
+    
+    Save your passwords in a file 
+"""

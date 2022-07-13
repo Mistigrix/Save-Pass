@@ -1,7 +1,9 @@
-from interface import *
-import constants
+from functions import *
 
 if __name__ == '__main__':
+
+    check_command_line(sys.argv[1:])  # if the program is called in a terminal
+
     print("\t\t>>>>>>>>>>>>>>>Save your password with SavePass<<<<<<<<<<<<<<<<<<<<<\n")
 
     running = True
